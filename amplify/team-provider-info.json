@@ -1,0 +1,20 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-bambank-dev-192147-authRole",
+            "UnauthRoleArn": "arn:aws:iam::917999008743:role/amplify-bambank-dev-192147-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::917999008743:role/amplify-bambank-dev-192147-authRole",
+            "Region": "eu-west-1",
+            "DeploymentBucketName": "amplify-bambank-dev-192147-deployment",
+            "UnauthRoleName": "amplify-bambank-dev-192147-unauthRole",
+            "StackName": "amplify-bambank-dev-192147",
+            "StackId": "arn:aws:cloudformation:eu-west-1:917999008743:stack/amplify-bambank-dev-192147/59d81cc0-dfed-11ea-b4d6-06c305fba8da",
+            "AmplifyAppId": "d1m4es7vfyel9m"
+        },
+        "categories": {
+            "auth": {
+                "bambankb98d4628": {}
+            }
+        }
+    }
+}

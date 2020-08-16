@@ -1,0 +1,10 @@
+{
+	"auth": {
+		"bambankb98d4628": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [],
+			"customAuth": false
+		}
+	}
+}
