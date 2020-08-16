@@ -2,13 +2,10 @@ import React, { Component, useState } from "react";
 import { Link } from "react-router-dom";
 import { withAmplify } from "../../contexts/Amplify";
 import { Input, Button, Paragraph } from "../../components";
+import { useFormFields } from "../../libs/hooksLib";
 import styled from "styled-components";
-import COLORS from "../../constants/colors";
 
 import { useForm } from "react-hook-form";
-
-import amplify from "../../contexts/Amplify";
-import { Auth } from "aws-amplify";
 
 const StyledForm = styled.form`
 	display: flex;
@@ -16,35 +13,17 @@ const StyledForm = styled.form`
 	width: 100%;
 `;
 
-const ResetPassword = ({ amplify }) => {
-	const { handleSubmit, register, watch, errors, reset } = useForm();
+const PasswordForgetFormBase = ({ amplify }) => {
+	const { handleSubmit, register, watch, errors } = useForm();
 
-	console.log("errors", errors);
+	const [email, setEmail] = useState("");
 
 	const [codeSent, setCodeSent] = useState(false);
 	const [confirmed, setConfirmed] = useState(false);
 	const [isConfirming, setIsConfirming] = useState(false);
 	const [isSendingCode, setIsSendingCode] = useState(false);
 
-	const validateCodeForm = () => {
-		const code = watch("code");
-		return code.length > 0;
-	};
-
-	const validateResetForm = () => {
-		const fields = watch(["code", "password", "confirmPassword"]);
-		console.log("fields: ", fields);
-
-		return (
-			fields.code.length > 0 &&
-			fields.password.length > 0 &&
-			fields.password === fields.confirmPassword
-		);
-	};
-
 	const handleSendCodeClick = async (values) => {
-		console.log(values);
-
 		setIsSendingCode(true);
 
 		await amplify
@@ -52,7 +31,7 @@ const ResetPassword = ({ amplify }) => {
 			.then((data) => {
 				console.log(data);
 				setCodeSent(true);
-				reset();
+				setEmail(values.email);
 			})
 			.catch((error) => {
 				console.log("error: ", error);
@@ -62,15 +41,12 @@ const ResetPassword = ({ amplify }) => {
 	};
 
 	const handleConfirmClick = async (values) => {
-		console.log(values);
-
 		setIsConfirming(true);
 
 		await amplify
-			.doForgetPasswordSubmit(values.email, values.code, values.password)
+			.doForgetPasswordSubmit(email, values.code, values.password)
 			.then(() => {
 				setConfirmed(true);
-				reset();
 			})
 			.catch((e) => {
 				console.log("error: ", e);
@@ -85,6 +61,7 @@ const ResetPassword = ({ amplify }) => {
 				<Input
 					type="text"
 					name="email"
+					autoFocus
 					placeholder="Email Address"
 					width="300px"
 					ref={register({
@@ -109,12 +86,13 @@ const ResetPassword = ({ amplify }) => {
 	};
 
 	const renderConfirmationForm = () => {
-		const fields = watch();
-
 		return (
 			<StyledForm onSubmit={handleSubmit(handleConfirmClick)}>
+				<Paragraph>
+					Please check your email ({email}) for the confirmation code.
+				</Paragraph>
 				<Input
-					type="text"
+					type="tel"
 					name="code"
 					placeholder="Confirmation code"
 					ref={register({
@@ -130,10 +108,6 @@ const ResetPassword = ({ amplify }) => {
 						{errors.code.message}
 					</Paragraph>
 				)}
-
-				<Paragraph>
-					Please check your email ({fields.email}) for the confirmation code.
-				</Paragraph>
 
 				<Input
 					type="password"
@@ -160,6 +134,10 @@ const ResetPassword = ({ amplify }) => {
 					placeholder="Confirm Password"
 					ref={register({
 						required: "This field is required",
+						validate: (value) => {
+							const password = watch("password");
+							return value === password || "The passwords do not match";
+						},
 						minLength: {
 							value: 6,
 							message: "Password must be longer than 6 characters.",
@@ -200,4 +178,4 @@ const ResetPassword = ({ amplify }) => {
 	);
 };
 
-export default withAmplify(ResetPassword);
+export default withAmplify(PasswordForgetFormBase);
