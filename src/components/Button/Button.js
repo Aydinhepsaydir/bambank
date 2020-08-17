@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import COLORS from "../../constants/colors";
-import mediaQueries from "../../constants/mediaQueries";
 
 const Primary = styled.button`
 	border: 0;

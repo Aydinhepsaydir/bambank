@@ -1,42 +1,44 @@
 {
-  "name": "bambank",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@hookform/error-message": "0.0.4",
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.5.0",
-    "@testing-library/user-event": "^7.2.1",
-    "aws-amplify": "^3.0.23",
-    "firebase": "^7.18.0",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-helmet": "^6.1.0",
-    "react-hook-form": "^6.4.0",
-    "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.3",
-    "recompose": "^0.30.0",
-    "styled-components": "^5.1.1"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+	"name": "bambank",
+	"version": "0.1.0",
+	"private": true,
+	"dependencies": {
+		"@aws-amplify/ui-components": "^0.6.1",
+		"@aws-amplify/ui-react": "^0.2.14",
+		"@hookform/error-message": "0.0.4",
+		"@testing-library/jest-dom": "^4.2.4",
+		"@testing-library/react": "^9.5.0",
+		"@testing-library/user-event": "^7.2.1",
+		"aws-amplify": "^3.0.23",
+		"aws-amplify-react": "^4.1.22",
+		"react": "^16.13.1",
+		"react-dom": "^16.13.1",
+		"react-helmet": "^6.1.0",
+		"react-hook-form": "^6.4.0",
+		"react-router-dom": "^5.2.0",
+		"react-scripts": "3.4.3",
+		"recompose": "^0.30.0",
+		"styled-components": "^5.1.1"
+	},
+	"scripts": {
+		"start": "react-scripts start",
+		"build": "react-scripts build",
+		"test": "react-scripts test",
+		"eject": "react-scripts eject"
+	},
+	"eslintConfig": {
+		"extends": "react-app"
+	},
+	"browserslist": {
+		"production": [
+			">0.2%",
+			"not dead",
+			"not op_mini all"
+		],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
+	}
 }

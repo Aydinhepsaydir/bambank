@@ -12,7 +12,7 @@ const StyledH1 = styled.h1`
 const StyledH2 = styled.h2`
 	padding: ${(props) => props.padding || "20px 0 0 0"};
 	margin: ${(props) => props.margin || "28px 0"};
-	font-size: 28px;
+	font-size: 40px;
 	color: ${(props) => props.color || COLORS.primary};
 `;
 
