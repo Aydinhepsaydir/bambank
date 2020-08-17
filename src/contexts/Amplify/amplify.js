@@ -1,4 +1,12 @@
-import { Auth } from "aws-amplify";
+import { Auth, API } from "aws-amplify";
+
+const apiName = "bambankfinal";
+const path = "/users";
+const params = {
+	headers: {}, // OPTIONAL
+	response: true, // OPTIONAL (return the entire Axios response object instead of only response.data)
+	queryStringParameters: {},
+};
 
 class AmplifyClass {
 	doSignUp = async (username, password, name) => {
@@ -104,6 +112,22 @@ class AmplifyClass {
 			};
 			return userError;
 		}
+	};
+
+	/////////////////////////////////////////////////////////////////
+	///////
+	/////// USERS API
+	///////
+	/////////////////////////////////////////////////////////////////
+
+	getUsers = () => {
+		API.get(apiName, path, params)
+			.then((response) => {
+				console.log("response from dynamodb: ", response);
+			})
+			.catch((error) => {
+				console.log(error.response);
+			});
 	};
 }
 

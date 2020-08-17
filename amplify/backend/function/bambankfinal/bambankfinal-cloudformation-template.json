@@ -77,7 +77,7 @@
 				"Timeout": "25",
 				"Code": {
 					"S3Bucket": "amplify-bambank-dev-192147-deployment",
-					"S3Key": "amplify-builds/bambankfinal-704466707a4e76413534-build.zip"
+					"S3Key": "amplify-builds/bambankfinal-7251624c6e316e435a66-build.zip"
 				}
 			}
 		},

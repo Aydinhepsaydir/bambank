@@ -1,6 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { withAmplify } from "../../contexts/Amplify";
 
-const CheckBalanceView = () => {
+const CheckBalanceView = ({ amplify }) => {
+	useEffect(() => {
+		const users = amplify.getUsers();
+	});
+
 	return (
 		<>
 			<h1>CheckBalanceView</h1>
@@ -8,4 +13,4 @@ const CheckBalanceView = () => {
 	);
 };
 
-export default CheckBalanceView;
+export default withAmplify(CheckBalanceView);
