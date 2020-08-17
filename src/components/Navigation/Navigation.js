@@ -21,28 +21,36 @@ const Nav = (props) => {
 	const { authState, amplify } = props;
 	return (
 		<MenuWrapper>
-			<StyledLink to="/">
-				<Title type="h1" color={COLORS.white} margin="0" padding="0">
-					Bambank
-				</Title>
-			</StyledLink>
-			{console.log("authState: ", authState)}
 			{authState == "signedIn" ? (
-				<Button
-					primary
-					rounded
-					onClick={() => {
-						amplify.doSignOut();
-					}}
-				>
-					Sign Out
-				</Button>
-			) : (
-				<StyledLink to={ROUTES.SIGN_IN}>
-					<Button primary rounded>
-						Sign In
+				<>
+					<StyledLink to={ROUTES.DASHBOARD}>
+						<Title type="h1" color={COLORS.white} margin="0" padding="0">
+							Bambank
+						</Title>
+					</StyledLink>
+					<Button
+						primary
+						rounded
+						onClick={() => {
+							amplify.doSignOut();
+						}}
+					>
+						Sign Out
 					</Button>
-				</StyledLink>
+				</>
+			) : (
+				<>
+					<StyledLink to={ROUTES.LANDING}>
+						<Title type="h1" color={COLORS.white} margin="0" padding="0">
+							Bambank
+						</Title>
+					</StyledLink>
+					<StyledLink to={ROUTES.SIGN_IN}>
+						<Button primary rounded>
+							Sign In
+						</Button>
+					</StyledLink>
+				</>
 			)}
 		</MenuWrapper>
 	);

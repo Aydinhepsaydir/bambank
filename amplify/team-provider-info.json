@@ -13,7 +13,8 @@
         },
         "categories": {
             "auth": {
-                "bambankb98d4628": {}
+                "bambankb98d4628": {},
+                "userPoolGroups": {}
             }
         }
     }
