@@ -1,5 +1,0 @@
-{
-    "tableName": "bambankfinal",
-    "partitionKeyName": "id",
-    "partitionKeyType": "S"
-}
