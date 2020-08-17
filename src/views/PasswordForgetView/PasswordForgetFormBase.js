@@ -2,7 +2,6 @@ import React, { Component, useState } from "react";
 import { Link } from "react-router-dom";
 import { withAmplify } from "../../contexts/Amplify";
 import { Input, Button, Paragraph } from "../../components";
-import { useFormFields } from "../../libs/hooksLib";
 import styled from "styled-components";
 
 import { useForm } from "react-hook-form";
@@ -14,7 +13,14 @@ const StyledForm = styled.form`
 `;
 
 const PasswordForgetFormBase = ({ amplify }) => {
-	const { handleSubmit, register, watch, errors } = useForm();
+	const { handleSubmit, register, watch, errors } = useForm({
+		defaultValues: {
+			email: "",
+			password: "",
+			confirmPassword: "",
+			code: "",
+		},
+	});
 
 	const [email, setEmail] = useState("");
 
@@ -61,7 +67,6 @@ const PasswordForgetFormBase = ({ amplify }) => {
 				<Input
 					type="text"
 					name="email"
-					autoFocus
 					placeholder="Email Address"
 					width="300px"
 					ref={register({
@@ -116,8 +121,8 @@ const PasswordForgetFormBase = ({ amplify }) => {
 					ref={register({
 						required: "This field is required",
 						minLength: {
-							value: 6,
-							message: "Password must be longer than 6 characters.",
+							value: 8,
+							message: "Password must be longer than 8 characters.",
 						},
 					})}
 				/>
@@ -139,8 +144,8 @@ const PasswordForgetFormBase = ({ amplify }) => {
 							return value === password || "The passwords do not match";
 						},
 						minLength: {
-							value: 6,
-							message: "Password must be longer than 6 characters.",
+							value: 8,
+							message: "Password must be longer than 8 characters.",
 						},
 					})}
 				/>

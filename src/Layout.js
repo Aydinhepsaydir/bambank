@@ -2,8 +2,8 @@ import React from "react";
 import { Helmet } from "react-helmet";
 import App from "./App";
 import styled from "styled-components";
-import { withAuthentication } from "./contexts/Session";
 import Navigation from "./components/Navigation/Navigation";
+import { withAuthentication } from "./contexts/Session";
 
 const Container = styled.div`
 	height: calc(100vh - 70px);

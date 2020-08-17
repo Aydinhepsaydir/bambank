@@ -1,6 +1,7 @@
 import React from "react";
 
 import Routes from "./Routes";
+import { withAuthentication } from "./contexts/Session";
 
 function App() {
 	return (
@@ -10,4 +11,4 @@ function App() {
 	);
 }
 
-export default App;
+export default withAuthentication(App);

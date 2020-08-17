@@ -6,20 +6,6 @@ import { ReactComponent as AuthImage } from "../../assets/graphics/auth.svg";
 import COLORS from "../../constants/colors";
 import mediaQueries from "../../constants/mediaQueries";
 
-const StyledImg = styled.img`
-	width: 100%;
-	height: auto;
-	margin: 25px 0px;
-
-	@media ${mediaQueries.tabletPortraitUp} {
-		width: 400px;
-	}
-
-	@media ${mediaQueries.tabletLandscapeUp} {
-		width: 550px;
-	}
-`;
-
 const SignUpWrapper = styled.div`
 	width: 100%;
 	height: 100%;
@@ -49,8 +35,6 @@ const SignUpPage = () => (
 	<SignUpWrapper>
 		<AuthImage />
 		<FuncWrapper>
-			<Title type="h1">Create an account</Title>
-			<Paragraph fontSize="16px">It's quick and easy.</Paragraph>
 			<SignUpForm />
 		</FuncWrapper>
 	</SignUpWrapper>
