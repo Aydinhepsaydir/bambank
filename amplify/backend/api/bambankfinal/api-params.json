@@ -1,0 +1,34 @@
+{
+    "paths": [
+        {
+            "name": "/users",
+            "lambdaFunction": "bambankfinal",
+            "privacy": {
+                "open": true
+            }
+        }
+    ],
+    "resourceName": "bambankfinal",
+    "apiName": "bambankfinal",
+    "functionArns": [
+        {
+            "lambdaFunction": "bambankfinal"
+        }
+    ],
+    "privacy": {
+        "auth": 0,
+        "unauth": 0,
+        "authRoleName": "amplify-bambank-dev-192147-authRole",
+        "unAuthRoleName": "amplify-bambank-dev-192147-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "bambankfinal",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}

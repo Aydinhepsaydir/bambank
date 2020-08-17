@@ -1,0 +1,5 @@
+{
+    "tableName": "bambankdynamodb",
+    "partitionKeyName": "ID",
+    "partitionKeyType": "S"
+}
