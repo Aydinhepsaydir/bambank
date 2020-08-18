@@ -1,8 +1,6 @@
 import React from "react";
-import styled from "styled-components";
 import * as ROUTES from "../../constants/routes";
 import { withRouter } from "react-router-dom";
-import COLORS from "../../constants/colors";
 
 import { Title, Paragraph, Button } from "../../components";
 import { Section, TextWrapper } from "./LandingViews.styled";

@@ -27,7 +27,7 @@ const Nav = (props) => {
 	const { authState, amplify } = props;
 	return (
 		<MenuWrapper>
-			{authState == "signedIn" ? (
+			{authState === "signedIn" ? (
 				<>
 					<NavMenu>
 						<StyledLink to={ROUTES.DASHBOARD}>

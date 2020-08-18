@@ -25,25 +25,21 @@ const ConfirmAccount = ({
 		history.push(ROUTES.DASHBOARD);
 	}
 
-	const { handleSubmit, register, errors, watch } = useForm({
+	const { handleSubmit, register, errors } = useForm({
 		defaultValues: {
 			code: "",
 		},
 	});
 
-	const [confirmed, setConfirmed] = useState(false);
 	const [isConfirming, setIsConfirming] = useState(false);
 
 	const handleConfirmClick = async (values) => {
-		setIsConfirming(true);
-
 		await amplify
 			.doConfirmSignUp(email, values.code)
 			.then((data) => {
 				if (data?.error) {
 					alert(data.error.message);
 				} else {
-					setConfirmed(true);
 					//sign user in after verification
 					amplify.doSignIn(email, password).then(async (data) => {
 						//add user details to firebase
@@ -55,7 +51,6 @@ const ConfirmAccount = ({
 			.catch((e) => {
 				console.log("error: ", e);
 				setIsConfirming(false);
-				setConfirmed(false);
 			});
 	};
 

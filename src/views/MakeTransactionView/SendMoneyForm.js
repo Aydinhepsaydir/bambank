@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Hub } from "aws-amplify";
 import moment from "moment";
 import styled from "styled-components";
@@ -34,7 +34,7 @@ const SendMoneyForm = ({ amplify, history, firebase, user }) => {
 				},
 			],
 			//calculate new balance
-			balance: type == "R" ? balance + amount : balance - amount,
+			balance: type === "R" ? balance + amount : balance - amount,
 		};
 	};
 

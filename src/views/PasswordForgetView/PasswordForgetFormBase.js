@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { withAmplify } from "../../contexts/Amplify";
 import { Input, Button, Paragraph } from "../../components";
@@ -83,7 +83,7 @@ const PasswordForgetFormBase = ({ amplify }) => {
 					</Paragraph>
 				)}
 
-				<Button type="submit" primary>
+				<Button type="submit" primary disabled={isSendingCode}>
 					Reset
 				</Button>
 			</StyledForm>
@@ -156,7 +156,7 @@ const PasswordForgetFormBase = ({ amplify }) => {
 					</Paragraph>
 				)}
 
-				<Button type="submit" primary>
+				<Button type="submit" primary disabled={isConfirming}>
 					Reset
 				</Button>
 			</StyledForm>

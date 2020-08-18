@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { compose } from "recompose";
 import { withRouter } from "react-router-dom";
 import { withAuthentication } from "../../contexts/Session";

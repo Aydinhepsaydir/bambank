@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import { withAmplify } from "../../contexts/Amplify";
 import { withFirebase } from "../../contexts/Firebase";
-import * as ROUTES from "../../constants/routes";
 import { compose } from "recompose";
 import { withRouter, Link } from "react-router-dom";
 import { Input, Button, Paragraph, Title } from "../../components";
 import styled from "styled-components";
-import COLORS from "../../constants/colors";
 
 import { useForm } from "react-hook-form";
 import { ConfirmAccountView } from "../../views";
@@ -34,6 +32,7 @@ const SignUpFormBase = ({ amplify, firebase }) => {
 	const [name, setName] = useState("");
 
 	const [codeSent, setCodeSent] = useState(false);
+	// eslint-disable-next-line
 	const [confirmed, setConfirmed] = useState(false);
 	const [isSendingCode, setIsSendingCode] = useState(false);
 
@@ -70,7 +69,7 @@ const SignUpFormBase = ({ amplify, firebase }) => {
 						ref={register({
 							required: "This field is required",
 							pattern: {
-								value: /^[A-Za-z\s\-]+$/,
+								value: /^[A-Za-z\s]+$/,
 								message: "Please enter your real name",
 							},
 						})}

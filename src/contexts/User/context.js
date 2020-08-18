@@ -18,7 +18,6 @@ class UserProvider extends Component {
 	}
 
 	onAuthEvent = async (payload) => {
-		console.log("payload: ", payload);
 		if (payload.event === "signIn") {
 			const { firebase } = this.props;
 			const userId = payload.data.username;
@@ -54,17 +53,9 @@ class UserProvider extends Component {
 	};
 
 	componentDidMount() {
-		const { authData, authState } = this.props;
-		console.log("props from user context: ", this.props);
-
 		Hub.listen("auth", (data) => {
-			console.log("inside the hub");
 			const { payload } = data;
 			this.onAuthEvent(payload);
-			console.log(
-				"A new auth event has happened: ",
-				data.payload.data.username + " has " + data.payload.event
-			);
 		});
 
 		Hub.listen("transactions", () => {
