@@ -4,13 +4,15 @@ import SendMoneyForm from "./SendMoneyForm";
 import {
 	SendMoneyWrapper,
 	FuncWrapper,
-	StyledSvg,
+	StyledImage,
 } from "./MakeTransactionView.styled";
 
 import { compose } from "recompose";
 import { withRouter } from "react-router-dom";
 import { withAuthentication } from "../../contexts/Session";
 import * as ROUTES from "../../constants/routes";
+
+import send_money from "../../assets/graphics/send_money.png";
 
 const MakeTransactionView = ({ authState, history }) => {
 	if (authState === "signIn") {
@@ -19,10 +21,10 @@ const MakeTransactionView = ({ authState, history }) => {
 
 	return (
 		<SendMoneyWrapper>
+			<StyledImage src={send_money} />
 			<FuncWrapper>
 				<SendMoneyForm />
 			</FuncWrapper>
-			<StyledSvg />
 		</SendMoneyWrapper>
 	);
 };

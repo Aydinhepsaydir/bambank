@@ -44,6 +44,7 @@ class Firebase {
 				amount: 100,
 				who: "Bamboo",
 				transactionType: "receive",
+				message: "First 100 on us.",
 			},
 		];
 		const balance = 100;

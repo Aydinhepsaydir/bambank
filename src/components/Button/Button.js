@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import COLORS from "../../constants/colors";
+import mediaQueries from "../../constants/mediaQueries";
 
 const Primary = styled.button`
 	border: 0;
@@ -23,6 +24,11 @@ const Primary = styled.button`
 	background-color: ${COLORS.secondary};
 
 	border-radius: 10px;
+
+	@media ${mediaQueries.mobileOnly} {
+		width: 100px;
+		font-size: 16px;
+	}
 `;
 
 const Secondary = styled.button`

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ReactComponent as SendMoneySvg } from "../../assets/graphics/send_money.svg";
+import mediaQueries from "../../constants/mediaQueries";
 
 export const SendMoneyWrapper = styled.div`
 	width: 100%;
@@ -7,10 +7,24 @@ export const SendMoneyWrapper = styled.div`
 	display: flex;
 	justify-content: space-evenly;
 	align-items: center;
+
+	@media ${mediaQueries.tabletLandscapeDown} {
+		flex-direction: column;
+	}
 `;
 
 export const FuncWrapper = styled.div``;
 
-export const StyledSvg = styled(SendMoneySvg)`
-	height: 400px;
+export const StyledImage = styled.img`
+	position: relative;
+	width: 500px;
+	margin-top: 180px;
+
+	@media ${mediaQueries.tabletLandscapeDown} {
+		width: 500px;
+	}
+
+	@media ${mediaQueries.mobileOnly} {
+		width: 40vh;
+	}
 `;

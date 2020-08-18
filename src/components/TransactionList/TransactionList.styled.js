@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import COLORS from "../../constants/colors";
+import mediaQueries from "../../constants/mediaQueries";
 
 export const Box = styled.div`
 	width: 400px;
@@ -17,4 +18,8 @@ export const Box = styled.div`
 	-webkit-box-shadow: 0px 0px 20px 10px rgba(217, 217, 217, 1);
 	-moz-box-shadow: 0px 0px 20px 10px rgba(217, 217, 217, 1);
 	box-shadow: 0px 0px 20px 10px rgba(217, 217, 217, 1);
+
+	@media ${mediaQueries.mobileOnly} {
+		width: 70%;
+	}
 `;

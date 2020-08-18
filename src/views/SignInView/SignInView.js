@@ -1,9 +1,9 @@
 import React from "react";
 
 import SignInFormBase from "./SignInFormBase";
-import { SignInWrapper, FuncWrapper } from "./SignInView.styled";
+import { SignInWrapper, FuncWrapper, StyledImage } from "./SignInView.styled";
 
-import { ReactComponent as Auth } from "../../assets/graphics/auth.svg";
+import auth from "../../assets/graphics/auth.png";
 
 import { compose } from "recompose";
 import { withRouter } from "react-router-dom";
@@ -21,7 +21,7 @@ const SignInView = (props) => {
 
 	return (
 		<SignInWrapper>
-			<Auth />
+			<StyledImage src={auth} />
 			<FuncWrapper>
 				<SignInFormBase />
 			</FuncWrapper>

@@ -22,7 +22,7 @@ const StyledForm = styled.form`
 const SendMoneyForm = ({ amplify, history, firebase, user }) => {
 	const { handleSubmit, register, errors } = useForm();
 
-	const updatedInfo = (amount, name, type, balance, transactions) => {
+	const updatedInfo = (amount, name, type, balance, transactions, message) => {
 		return {
 			transactions: [
 				...transactions,
@@ -31,6 +31,7 @@ const SendMoneyForm = ({ amplify, history, firebase, user }) => {
 					amount: amount,
 					who: name,
 					transactionType: type,
+					message: message,
 				},
 			],
 			//calculate new balance
@@ -41,7 +42,7 @@ const SendMoneyForm = ({ amplify, history, firebase, user }) => {
 	const onSubmit = async (values) => {
 		if (values.email === user.email) {
 			alert("You can't send money to yourself!");
-			history.push(ROUTES.MAKE_TRANSACTION);
+			return;
 		}
 
 		// get user from inputted email
@@ -63,30 +64,32 @@ const SendMoneyForm = ({ amplify, history, firebase, user }) => {
 						user.name,
 						"R", // R for received
 						balance,
-						transactions
+						transactions,
+						values.message
 					)
 				);
 			});
-		}
 
-		//update the logged in user
-		const currentUserRef = await firebase.getUser(user.uid).get();
-		if (!currentUserRef.exists) {
-			console.log("User does not exist!");
-		} else {
-			const { balance, transactions } = currentUserRef.data();
-			await firebase
-				.updateUser(
-					user.uid,
-					updatedInfo(
-						parseInt(values.amount),
-						values.email,
-						"S", // S for Sent
-						balance,
-						transactions
+			//update the logged in user
+			const currentUserRef = await firebase.getUser(user.uid).get();
+			if (!currentUserRef.exists) {
+				console.log("User does not exist!");
+			} else {
+				const { balance, transactions } = currentUserRef.data();
+				await firebase
+					.updateUser(
+						user.uid,
+						updatedInfo(
+							parseInt(values.amount),
+							values.email,
+							"S", // S for Sent
+							balance,
+							transactions,
+							values.message
+						)
 					)
-				)
-				.then(() => history.push(ROUTES.DASHBOARD));
+					.then(() => history.push(ROUTES.DASHBOARD));
+			}
 		}
 
 		//let context know to refresh the local user object
@@ -135,6 +138,23 @@ const SendMoneyForm = ({ amplify, history, firebase, user }) => {
 				{errors.amount && (
 					<Paragraph fontSize="16px" color="red" fontWeight="700">
 						{errors.amount.message}
+					</Paragraph>
+				)}
+
+				<Paragraph fontSize="16px">
+					What are you sending them money for?
+				</Paragraph>
+				<Input
+					type="text"
+					name="message"
+					placeholder="Message"
+					ref={register({
+						maxLength: 50,
+					})}
+				/>
+				{errors.message?.type === "maxLength" && (
+					<Paragraph fontSize="16px" color="red" fontWeight="700">
+						Your message is too long. (30 characters max.)
 					</Paragraph>
 				)}
 

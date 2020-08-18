@@ -10,6 +10,7 @@ const StyledForm = styled.form`
 	display: flex;
 	flex-direction: column;
 	width: 100%;
+	max-width: 300px;
 `;
 
 const PasswordForgetFormBase = ({ amplify }) => {

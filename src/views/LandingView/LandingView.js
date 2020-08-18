@@ -1,15 +1,15 @@
 import React from "react";
 import * as ROUTES from "../../constants/routes";
-import { withRouter } from "react-router-dom";
 
 import { Title, Paragraph, Button } from "../../components";
-import { Section, TextWrapper } from "./LandingViews.styled";
-
-import { ReactComponent as LandingOneSvg } from "../../assets/graphics/landing_top.svg";
-import { ReactComponent as LandingTwoSvg } from "../../assets/graphics/landing_bottom.svg";
+import { Section, TextWrapper, StyledImage } from "./LandingViews.styled";
 
 import { compose } from "recompose";
 import { withAuthentication } from "../../contexts/Session";
+import { withRouter } from "react-router-dom";
+
+import landing_top from "../../assets/graphics/landing_top.png";
+import landing_bottom from "../../assets/graphics/landing_bottom.png";
 
 const LandingView = (props) => {
 	const { history, authState } = props;
@@ -23,7 +23,6 @@ const LandingView = (props) => {
 		<>
 			{authState === "loading" && <Paragraph>Loading</Paragraph>}
 			<Section>
-				<LandingOneSvg />
 				<TextWrapper>
 					<Title type="h1">Join Us Today</Title>
 					<Paragraph>
@@ -37,6 +36,7 @@ const LandingView = (props) => {
 						Sign Up
 					</Button>
 				</TextWrapper>
+				<StyledImage src={landing_top} />
 			</Section>
 			<Section backgroundColor="white">
 				<TextWrapper>
@@ -51,7 +51,7 @@ const LandingView = (props) => {
 						Introducing <b>Bambeuros</b>, our new currency.
 					</Paragraph>
 				</TextWrapper>
-				<LandingTwoSvg />
+				<StyledImage src={landing_bottom} />
 			</Section>
 		</>
 	);

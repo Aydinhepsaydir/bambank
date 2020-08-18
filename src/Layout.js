@@ -8,17 +8,7 @@ import { withAuthentication } from "./contexts/Session";
 const Main = styled.main`
 	width: 100%;
 	height: 100%;
-
-	max-width: 1440px;
-`;
-
-const Wrapper = styled.div`
-	width: 100%;
-	height: 100%;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+	position: relative;
 `;
 
 const Container = styled.div`
@@ -34,11 +24,9 @@ const Layout = () => {
 				<title>{title}</title>
 			</Helmet>
 			<Navigation />
-			<Wrapper>
-				<Main>
-					<App />
-				</Main>
-			</Wrapper>
+			<Main>
+				<App />
+			</Main>
 		</Container>
 	);
 };

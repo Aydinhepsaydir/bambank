@@ -2,8 +2,13 @@ import React from "react";
 
 import { PasswordForgetForm } from "./";
 import { Title, Paragraph } from "../../components";
-import { SignInWrapper, FuncWrapper } from "./PasswordForgetView.styled";
-import { ReactComponent as AuthImage } from "../../assets/graphics/auth.svg";
+import {
+	ForgetPasswordWrapper,
+	FuncWrapper,
+	StyledImage,
+} from "./PasswordForgetView.styled";
+
+import auth from "../../assets/graphics/auth.png";
 
 import { compose } from "recompose";
 import { withRouter } from "react-router-dom";
@@ -19,8 +24,8 @@ const PasswordForgetView = (props) => {
 		history.push(ROUTES.DASHBOARD);
 	}
 	return (
-		<SignInWrapper>
-			<AuthImage />
+		<ForgetPasswordWrapper>
+			<StyledImage src={auth} />
 			<FuncWrapper>
 				<Title type="h1">Forgotten your password?</Title>
 				<Paragraph fontSize="16px">
@@ -29,7 +34,7 @@ const PasswordForgetView = (props) => {
 				</Paragraph>
 				<PasswordForgetForm />
 			</FuncWrapper>
-		</SignInWrapper>
+		</ForgetPasswordWrapper>
 	);
 };
 
