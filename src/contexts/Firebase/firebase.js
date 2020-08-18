@@ -1,8 +1,6 @@
 import app from "firebase/app";
 import firebase from "firebase";
 import moment from "moment";
-// import "firebase/auth";
-// import "firebase/database";
 
 var config = {
 	apiKey: "AIzaSyCYutN1ugqKL3uPDdUJI1WL7TLMY1gSYYU",
@@ -45,6 +43,7 @@ class Firebase {
 				date: moment().format("MMM Do"),
 				amount: 100,
 				who: "Bamboo",
+				transactionType: "receive",
 			},
 		];
 		const balance = 100;
