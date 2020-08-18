@@ -6,8 +6,8 @@ import { Box } from "./TransactionList.styled";
 const TransactionList = ({ transactions }) => {
 	return (
 		<Box>
-			{transactions.map((transaction) => {
-				return <TransactionCard transaction={transaction} />;
+			{transactions.map((transaction, i) => {
+				return <TransactionCard key={i} transaction={transaction} />;
 			})}
 		</Box>
 	);

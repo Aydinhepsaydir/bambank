@@ -9,8 +9,8 @@ import {
 	PageWrapper,
 	BalanceWrapper,
 	MyTransactionsWrapper,
+	StyledSvg,
 } from "./CheckBalanceView.styled";
-import { ReactComponent as MyTransactionsSvg } from "../../assets/graphics/my_transactions.svg";
 
 import COLORS from "../../constants/colors";
 import * as ROUTES from "../../constants/routes";
@@ -36,7 +36,7 @@ const CheckBalanceView = ({ user, authState, history }) => {
 					<Title type="h1">Recent Transactions</Title>
 					<MyTransactionsWrapper>
 						<TransactionList transactions={user.transactions} />
-						<MyTransactionsSvg />
+						<StyledSvg />
 					</MyTransactionsWrapper>
 				</>
 			)}

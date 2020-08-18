@@ -2,8 +2,9 @@ import styled from "styled-components";
 import COLORS from "../../constants/colors";
 
 export const Box = styled.div`
-	min-width: 400px;
+	width: 400px;
 	min-height: 400px;
+	max-height: 400px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;

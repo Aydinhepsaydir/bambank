@@ -5,12 +5,24 @@ import styled from "styled-components";
 import Navigation from "./components/Navigation/Navigation";
 import { withAuthentication } from "./contexts/Session";
 
-const Container = styled.div`
-	height: calc(100vh - 70px);
+const Main = styled.main`
+	width: 100%;
+	height: 100%;
+
+	max-width: 1440px;
 `;
 
-const Main = styled.main`
+const Wrapper = styled.div`
+	width: 100%;
 	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+`;
+
+const Container = styled.div`
+	height: calc(100vh - 70px);
 	width: 100%;
 `;
 
@@ -22,9 +34,11 @@ const Layout = () => {
 				<title>{title}</title>
 			</Helmet>
 			<Navigation />
-			<Main>
-				<App />
-			</Main>
+			<Wrapper>
+				<Main>
+					<App />
+				</Main>
+			</Wrapper>
 		</Container>
 	);
 };

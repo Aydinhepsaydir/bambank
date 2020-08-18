@@ -5,7 +5,7 @@ import { CardWrapper, DateAndWho } from "./TransactionCard.styled";
 import COLORS from "../../constants/colors";
 
 const TransactionCard = ({ transaction }) => {
-	const { date, who, amount } = transaction;
+	const { date, who, amount, transactionType } = transaction;
 
 	return (
 		<CardWrapper>
@@ -30,7 +30,7 @@ const TransactionCard = ({ transaction }) => {
 				fontWeight="500"
 				fontSize="20px"
 			>
-				{amount}
+				{transactionType === "S" ? -amount : amount}
 			</Paragraph>
 		</CardWrapper>
 	);

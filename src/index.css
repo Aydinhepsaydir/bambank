@@ -16,3 +16,25 @@ h1,
 h2 {
 	font-family: "Italiana", serif;
 }
+
+/* width */
+::-webkit-scrollbar {
+	width: 5px;
+	border-radius: 5px;
+	border: 0;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: white;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background-color: #fe4d56;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background-color: #fe4d56;
+}

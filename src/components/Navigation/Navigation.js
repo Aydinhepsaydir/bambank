@@ -1,6 +1,11 @@
 import React from "react";
 
-import { MenuWrapper, StyledLink } from "./Navigation.styled";
+import {
+	MenuWrapper,
+	StyledLink,
+	StyledTitle,
+	NavMenu,
+} from "./Navigation.styled";
 import { Title, Button } from "../../components";
 import * as ROUTES from "../../constants/routes";
 import COLORS from "../../constants/colors";
@@ -8,6 +13,7 @@ import COLORS from "../../constants/colors";
 import { compose } from "recompose";
 import { withAmplify } from "../../contexts/Amplify";
 import { Authenticator } from "aws-amplify-react";
+import Paragraph from "../Paragraph";
 
 const Navigation = ({ amplify }) => {
 	return (
@@ -23,20 +29,28 @@ const Nav = (props) => {
 		<MenuWrapper>
 			{authState == "signedIn" ? (
 				<>
-					<StyledLink to={ROUTES.DASHBOARD}>
-						<Title type="h1" color={COLORS.white} margin="0" padding="0">
-							Bambank
-						</Title>
+					<NavMenu>
+						<StyledLink to={ROUTES.DASHBOARD}>
+							<StyledTitle type="h1">Bambank</StyledTitle>
+						</StyledLink>
+						<StyledLink to={ROUTES.CHECK_BALANCE}>
+							<Paragraph color={COLORS.backgroundColor}>Balance</Paragraph>
+						</StyledLink>
+						<StyledLink to={ROUTES.MAKE_TRANSACTION}>
+							<Paragraph color={COLORS.backgroundColor}>Send Money</Paragraph>
+						</StyledLink>
+					</NavMenu>
+					<StyledLink>
+						<Button
+							primary
+							rounded
+							onClick={() => {
+								amplify.doSignOut();
+							}}
+						>
+							Sign Out
+						</Button>
 					</StyledLink>
-					<Button
-						primary
-						rounded
-						onClick={() => {
-							amplify.doSignOut();
-						}}
-					>
-						Sign Out
-					</Button>
 				</>
 			) : (
 				<>
