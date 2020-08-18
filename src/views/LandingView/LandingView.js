@@ -7,8 +7,8 @@ import COLORS from "../../constants/colors";
 import { Title, Paragraph, Button } from "../../components";
 import { Section, TextWrapper } from "./LandingViews.styled";
 
-import { ReactComponent as LandingOneSvg } from "../../assets/graphics/landingOne.svg";
-import { ReactComponent as LandingTwoSvg } from "../../assets/graphics/landingTwo.svg";
+import { ReactComponent as LandingOneSvg } from "../../assets/graphics/landing_top.svg";
+import { ReactComponent as LandingTwoSvg } from "../../assets/graphics/landing_bottom.svg";
 
 import { compose } from "recompose";
 import { withAuthentication } from "../../contexts/Session";

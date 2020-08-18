@@ -31,8 +31,6 @@ const ConfirmAccount = ({
 		},
 	});
 
-	console.log("firebase", firebase);
-
 	const [confirmed, setConfirmed] = useState(false);
 	const [isConfirming, setIsConfirming] = useState(false);
 
