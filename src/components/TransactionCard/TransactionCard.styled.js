@@ -9,6 +9,7 @@ export const CardWrapper = styled.div`
 	color: ${COLORS.textColor};
 	background-color: ${COLORS.primary};
 	padding: 12px;
+	margin: 4px 0;
 	border-radius: 10px;
 `;
 

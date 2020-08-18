@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import COLORS from "../../constants/colors";
+import { ReactComponent as MyTransactionsSvg } from "../../assets/graphics/my_transactions.svg";
 
 export const PageWrapper = styled.div`
 	width: 100%;
@@ -24,4 +25,10 @@ export const MyTransactionsWrapper = styled.div`
 	display: flex;
 	justify-content: space-evenly;
 	align-items: flex-start;
+	margin-bottom: 50px;
+`;
+
+export const StyledSvg = styled(MyTransactionsSvg)`
+	height: 400px;
+	margin: 32px 0;
 `;

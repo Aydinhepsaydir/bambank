@@ -22,9 +22,9 @@ class UserProvider extends Component {
 		if (payload.event === "signIn") {
 			const { firebase } = this.props;
 			const userId = payload.data.username;
-			const user = await firebase.getUser(userId);
+			const userRef = await firebase.getUser(userId);
 
-			user.onSnapshot(async (doc) => {
+			userRef.onSnapshot(async (doc) => {
 				this.setState({
 					user: doc.data(),
 				});
@@ -39,6 +39,20 @@ class UserProvider extends Component {
 		}
 	};
 
+	onTransactionEvent = async () => {
+		const userId = this.state.user.uid;
+		const { firebase } = this.props;
+		const userRef = await firebase.getUser(userId);
+
+		userRef.onSnapshot(async (doc) => {
+			this.setState({
+				user: doc.data(),
+			});
+
+			localStorage.setItem("user", JSON.stringify(doc.data()));
+		});
+	};
+
 	componentDidMount() {
 		const { authData, authState } = this.props;
 		console.log("props from user context: ", this.props);
@@ -51,6 +65,10 @@ class UserProvider extends Component {
 				"A new auth event has happened: ",
 				data.payload.data.username + " has " + data.payload.event
 			);
+		});
+
+		Hub.listen("transactions", () => {
+			this.onTransactionEvent();
 		});
 	}
 

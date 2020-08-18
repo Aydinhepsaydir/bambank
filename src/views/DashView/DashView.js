@@ -4,14 +4,15 @@ import { withRouter } from "react-router-dom";
 import { withAuthentication } from "../../contexts/Session";
 import * as ROUTES from "../../constants/routes";
 
-import { Title, Paragraph } from "../../components";
-import { Box, FuncWrapper } from "./DashView.styled";
+import { Title, Paragraph, TransactionList } from "../../components";
+import { Box, FuncWrapper, TransactionListContainer } from "./DashView.styled";
 
 import { ReactComponent as BalanceSvg } from "../../assets/graphics/check_balance.svg";
 import { ReactComponent as TransactionSvg } from "../../assets/graphics/make_transaction.svg";
+import { withUser } from "../../contexts/User";
 
 const DashView = (props) => {
-	const { authState, authData, history } = props;
+	const { authState, authData, history, user } = props;
 
 	if (authState === "signIn") {
 		history.push(ROUTES.SIGN_IN);
@@ -46,10 +47,15 @@ const DashView = (props) => {
 							<TransactionSvg />
 						</Box>
 					</FuncWrapper>
+					{user !== null && (
+						<TransactionListContainer>
+							<TransactionList transactions={user.transactions} />
+						</TransactionListContainer>
+					)}
 				</>
 			)}
 		</>
 	);
 };
 
-export default compose(withRouter, withAuthentication)(DashView);
+export default compose(withRouter, withUser, withAuthentication)(DashView);

@@ -28,3 +28,10 @@ export const FuncWrapper = styled.div`
 	display: flex;
 	justify-content: space-evenly;
 `;
+
+export const TransactionListContainer = styled.div`
+	width: 100%;
+	margin: 60px 0;
+	display: flex;
+	justify-content: center;
+`;

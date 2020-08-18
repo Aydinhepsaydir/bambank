@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { withRouter } from "react-router-dom";
-import { compose } from "recompose";
 import styled from "styled-components";
-import { withAmplify } from "../../contexts/Amplify";
 
+import { compose } from "recompose";
+import { withRouter } from "react-router-dom";
+import { withAmplify } from "../../contexts/Amplify";
 import * as ROUTES from "../../constants/routes";
+
 import { ConfirmAccountView } from "../../views";
 import { Paragraph, Input, Button, Title } from "../../components";
 import { PasswordForgetLink } from "../PasswordForgetView";
@@ -95,6 +96,7 @@ const SignInFormBase = ({ amplify, history }) => {
 	};
 
 	const renderConfirmationForm = (email, password) => {
+		console.log("email: ", email);
 		return <ConfirmAccountView username={email} password={password} />;
 	};
 
