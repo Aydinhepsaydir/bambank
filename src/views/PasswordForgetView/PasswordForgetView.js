@@ -1,48 +1,36 @@
 import React from "react";
-import styled from "styled-components";
+
 import { PasswordForgetForm } from "./";
 import { Title, Paragraph } from "../../components";
-import mediaQueries from "../../constants/mediaQueries";
+import { SignInWrapper, FuncWrapper } from "./PasswordForgetView.styled";
 import { ReactComponent as AuthImage } from "../../assets/graphics/auth.svg";
 
-const SignInWrapper = styled.div`
-	width: 100%;
-	height: 100%;
+import { compose } from "recompose";
+import { withRouter } from "react-router-dom";
+import { withAuthentication } from "../../contexts/Session";
 
-	@media ${mediaQueries.tabletPortraitUp} {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
+import * as ROUTES from "../../constants/routes";
+
+const PasswordForgetView = (props) => {
+	const { history, authState } = props;
+
+	//authenticated users sent to dash
+	if (authState === "signedIn") {
+		history.push(ROUTES.DASHBOARD);
 	}
+	return (
+		<SignInWrapper>
+			<AuthImage />
+			<FuncWrapper>
+				<Title type="h1">Forgotten your password?</Title>
+				<Paragraph fontSize="16px">
+					No worries, just enter your email below and we will send you a
+					password reset link.
+				</Paragraph>
+				<PasswordForgetForm />
+			</FuncWrapper>
+		</SignInWrapper>
+	);
+};
 
-	@media ${mediaQueries.tabletLandscapeUp} {
-		flex-direction: row;
-		justify-content: space-evenly;
-		align-items: center;
-	}
-`;
-
-const FuncWrapper = styled.div`
-	max-width: 500px;
-	@media ${mediaQueries.tabletPortraitUp} {
-		display: flex;
-		flex-direction: column;
-	}
-`;
-
-const PasswordForgetView = () => (
-	<SignInWrapper>
-		<AuthImage />
-		<FuncWrapper>
-			<Title type="h1">Forgotten your password?</Title>
-			<Paragraph fontSize="16px">
-				No worries, just enter your email below and we will send you a password
-				reset link.
-			</Paragraph>
-			<PasswordForgetForm />
-		</FuncWrapper>
-	</SignInWrapper>
-);
-
-export default PasswordForgetView;
+export default compose(withRouter, withAuthentication)(PasswordForgetView);

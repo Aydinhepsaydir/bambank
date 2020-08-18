@@ -4,9 +4,21 @@ import SignInFormBase from "./SignInFormBase";
 import { SignInWrapper, FuncWrapper } from "./SignInView.styled";
 
 import { ReactComponent as Auth } from "../../assets/graphics/auth.svg";
-import { Title } from "../../components";
 
-const SignInView = () => {
+import { compose } from "recompose";
+import { withRouter } from "react-router-dom";
+import { withAuthentication } from "../../contexts/Session";
+
+import * as ROUTES from "../../constants/routes";
+
+const SignInView = (props) => {
+	const { history, authState } = props;
+
+	//authenticated users sent to dash
+	if (authState === "signedIn") {
+		history.push(ROUTES.DASHBOARD);
+	}
+
 	return (
 		<SignInWrapper>
 			<Auth />
@@ -17,4 +29,4 @@ const SignInView = () => {
 	);
 };
 
-export default SignInView;
+export default compose(withRouter, withAuthentication)(SignInView);

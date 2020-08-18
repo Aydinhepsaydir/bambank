@@ -7,16 +7,25 @@ import COLORS from "../../constants/colors";
 import { Title, Paragraph, Button } from "../../components";
 import { Section, TextWrapper } from "./LandingViews.styled";
 
-import { ReactComponent as LandingOne } from "../../assets/graphics/landingOne.svg";
-import { ReactComponent as LandingTwo } from "../../assets/graphics/landingTwo.svg";
+import { ReactComponent as LandingOneSvg } from "../../assets/graphics/landingOne.svg";
+import { ReactComponent as LandingTwoSvg } from "../../assets/graphics/landingTwo.svg";
+
+import { compose } from "recompose";
+import { withAuthentication } from "../../contexts/Session";
 
 const LandingView = (props) => {
-	const { history } = props;
+	const { history, authState } = props;
+
+	//authenticated users sent to dash
+	if (authState === "signedIn") {
+		history.push(ROUTES.DASHBOARD);
+	}
 
 	return (
 		<>
+			{authState === "loading" && <Paragraph>Loading</Paragraph>}
 			<Section>
-				<LandingOne />
+				<LandingOneSvg />
 				<TextWrapper>
 					<Title type="h1">Join Us Today</Title>
 					<Paragraph>
@@ -44,10 +53,10 @@ const LandingView = (props) => {
 						Introducing <b>Bambeuros</b>, our new currency.
 					</Paragraph>
 				</TextWrapper>
-				<LandingTwo />
+				<LandingTwoSvg />
 			</Section>
 		</>
 	);
 };
 
-export default withRouter(LandingView);
+export default compose(withAuthentication, withRouter)(LandingView);
