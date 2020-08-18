@@ -1,43 +1,31 @@
 import React from "react";
-import styled from "styled-components";
-import { SignUpForm } from ".";
-import { Paragraph, Title } from "../../components";
+
 import { ReactComponent as AuthImage } from "../../assets/graphics/auth.svg";
-import COLORS from "../../constants/colors";
-import mediaQueries from "../../constants/mediaQueries";
+import { SignUpForm } from ".";
+import { SignUpWrapper, FuncWrapper } from "./SignUpView.styled";
 
-const SignUpWrapper = styled.div`
-	width: 100%;
-	height: 100%;
+import { compose } from "recompose";
+import { withRouter } from "react-router-dom";
+import { withAuthentication } from "../../contexts/Session";
 
-	@media ${mediaQueries.tabletPortraitUp} {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
+import * as ROUTES from "../../constants/routes";
+
+const SignUpView = (props) => {
+	const { history, authState } = props;
+
+	//authenticated users sent to dash
+	if (authState === "signedIn") {
+		history.push(ROUTES.DASHBOARD);
 	}
 
-	@media ${mediaQueries.tabletLandscapeUp} {
-		flex-direction: row;
-		justify-content: space-evenly;
-		align-items: center;
-	}
-`;
+	return (
+		<SignUpWrapper>
+			<AuthImage />
+			<FuncWrapper>
+				<SignUpForm />
+			</FuncWrapper>
+		</SignUpWrapper>
+	);
+};
 
-const FuncWrapper = styled.div`
-	@media ${mediaQueries.tabletPortraitUp} {
-		display: flex;
-		flex-direction: column;
-	}
-`;
-
-const SignUpPage = () => (
-	<SignUpWrapper>
-		<AuthImage />
-		<FuncWrapper>
-			<SignUpForm />
-		</FuncWrapper>
-	</SignUpWrapper>
-);
-
-export default SignUpPage;
+export default compose(withRouter, withAuthentication)(SignUpView);

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { withAmplify } from "../../contexts/Amplify";
+import { withFirebase } from "../../contexts/Firebase";
 import * as ROUTES from "../../constants/routes";
 import { compose } from "recompose";
 import { withRouter, Link } from "react-router-dom";
@@ -17,7 +18,7 @@ const StyledForm = styled.form`
 	max-width: 500px;
 `;
 
-const SignUpFormBase = ({ amplify }) => {
+const SignUpFormBase = ({ amplify, firebase }) => {
 	const { handleSubmit, register, errors, watch } = useForm({
 		defaultValues: {
 			name: "",
@@ -30,6 +31,7 @@ const SignUpFormBase = ({ amplify }) => {
 
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+	const [name, setName] = useState("");
 
 	const [codeSent, setCodeSent] = useState(false);
 	const [confirmed, setConfirmed] = useState(false);
@@ -41,10 +43,11 @@ const SignUpFormBase = ({ amplify }) => {
 		await amplify
 			.doSignUp(values.email, values.password, values.name)
 			.then((user) => {
-				console.log(user);
+				console.log("user: ", user);
 				setCodeSent(true);
 				setEmail(values.email);
 				setPassword(values.password);
+				setName(values.name);
 			})
 			.catch((error) => {
 				console.log("error: ", error);
@@ -146,7 +149,7 @@ const SignUpFormBase = ({ amplify }) => {
 	};
 
 	const renderConfirmationForm = () => {
-		return <ConfirmAccountView username={email} password={password} />;
+		return <ConfirmAccountView name={name} email={email} password={password} />;
 	};
 
 	const renderSuccessMessage = () => {
@@ -169,6 +172,10 @@ const SignUpFormBase = ({ amplify }) => {
 	);
 };
 
-const SignUpForm = compose(withRouter, withAmplify)(SignUpFormBase);
+const SignUpForm = compose(
+	withRouter,
+	withAmplify,
+	withFirebase
+)(SignUpFormBase);
 
 export default SignUpForm;

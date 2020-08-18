@@ -5,21 +5,24 @@ import * as serviceWorker from "./serviceWorker";
 import Layout from "./Layout";
 import AmplifyClass, { AmplifyContext } from "./contexts/Amplify";
 import { BrowserRouter } from "react-router-dom";
-// import { UserProvider } from "./contexts/User";
+import Firebase, { FirebaseContext } from "./contexts/Firebase";
 
 import Amplify from "aws-amplify";
 import awsconfig from "./aws-exports";
+import { UserProvider } from "./contexts/User";
 
 Amplify.configure(awsconfig);
 
 ReactDOM.render(
-	<AmplifyContext.Provider value={new AmplifyClass()}>
-		{/* <UserProvider> */}
-		<BrowserRouter>
-			<Layout />
-		</BrowserRouter>
-		{/* </UserProvider> */}
-	</AmplifyContext.Provider>,
+	<FirebaseContext.Provider value={new Firebase()}>
+		<AmplifyContext.Provider value={new AmplifyClass()}>
+			<UserProvider>
+				<BrowserRouter>
+					<Layout />
+				</BrowserRouter>
+			</UserProvider>
+		</AmplifyContext.Provider>
+	</FirebaseContext.Provider>,
 
 	document.getElementById("root")
 );

@@ -1,32 +1,30 @@
 import React, { useState } from "react";
-import styled from "styled-components";
 import { useForm } from "react-hook-form";
 import * as ROUTES from "../../constants/routes";
 
 import { compose } from "recompose";
 import { withRouter } from "react-router-dom";
 import { withAmplify } from "../../contexts/Amplify";
+import { withFirebase } from "../../contexts/Firebase";
+import { withAuthentication } from "../../contexts/Session";
 
 import { Paragraph, Input, Button, Title } from "../../components";
+import { ConfirmAccountWrapper, StyledForm } from "./ConfirmAccountView.styled";
 
-const ConfirmAccountWrapper = styled.div`
-	width: 100%;
-	height: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-`;
+const ConfirmAccount = ({
+	name,
+	email,
+	password,
+	amplify,
+	history,
+	firebase,
+	authState,
+}) => {
+	//authenticated users sent to dash
+	if (authState === "signedIn") {
+		history.push(ROUTES.DASHBOARD);
+	}
 
-const StyledForm = styled.form`
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: flex-start;
-	max-width: 500px;
-`;
-
-const ConfirmAccount = ({ username, password, amplify, history }) => {
 	const { handleSubmit, register, errors, watch } = useForm({
 		defaultValues: {
 			code: "",
@@ -38,17 +36,20 @@ const ConfirmAccount = ({ username, password, amplify, history }) => {
 
 	const handleConfirmClick = async (values) => {
 		setIsConfirming(true);
-		console.log(values);
 
 		await amplify
-			.doConfirmSignUp(username, values.code)
+			.doConfirmSignUp(email, values.code)
 			.then((data) => {
 				if (data?.error) {
 					alert(data.error.message);
 				} else {
 					setConfirmed(true);
-					amplify.doSignIn(username, password);
-					history.push(ROUTES.DASHBOARD);
+					//sign user in after verification
+					amplify.doSignIn(email, password).then(async (data) => {
+						//add user details to firebase
+						await firebase.createUser(data.username, name, email);
+						history.push(ROUTES.DASHBOARD);
+					});
 				}
 			})
 			.catch((e) => {
@@ -91,4 +92,9 @@ const ConfirmAccount = ({ username, password, amplify, history }) => {
 	);
 };
 
-export default compose(withRouter, withAmplify)(ConfirmAccount);
+export default compose(
+	withFirebase,
+	withRouter,
+	withAmplify,
+	withAuthentication
+)(ConfirmAccount);
