@@ -32,7 +32,12 @@ const LandingView = (props) => {
 					<Paragraph>
 						Your first <b>100</b> Bambeuros are on us.
 					</Paragraph>
-					<Button primary rounded onClick={() => history.push(ROUTES.SIGN_UP)}>
+					<Button
+						primary
+						rounded
+						onClick={() => history.push(ROUTES.SIGN_UP)}
+						margin="8px 0 8px 12px"
+					>
 						Sign Up
 					</Button>
 				</TextWrapper>

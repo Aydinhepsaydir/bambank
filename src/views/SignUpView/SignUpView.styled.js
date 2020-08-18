@@ -13,7 +13,11 @@ export const SignUpWrapper = styled.div`
 	}
 `;
 
-export const FuncWrapper = styled.div``;
+export const FuncWrapper = styled.div`
+	@media ${mediaQueries.mobileOnly} {
+		width: 90%;
+	}
+`;
 
 export const StyledImage = styled.img`
 	position: relative;

@@ -14,7 +14,9 @@ export const ForgetPasswordWrapper = styled.div`
 `;
 
 export const FuncWrapper = styled.div`
-	max-width: 300px;
+	@media ${mediaQueries.mobileOnly} {
+		width: 90%;
+	}
 `;
 
 export const StyledImage = styled.img`
