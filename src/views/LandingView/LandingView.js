@@ -2,7 +2,7 @@ import React from "react";
 import * as ROUTES from "../../constants/routes";
 
 import { Title, Paragraph, Button } from "../../components";
-import { Section, TextWrapper } from "./LandingViews.styled";
+import { Section, TextWrapper, StyledImage } from "./LandingViews.styled";
 
 import { compose } from "recompose";
 import { withAuthentication } from "../../contexts/Session";
@@ -36,10 +36,9 @@ const LandingView = (props) => {
 						Sign Up
 					</Button>
 				</TextWrapper>
-				<img src={landing_top} />
+				<StyledImage src={landing_top} />
 			</Section>
 			<Section backgroundColor="white">
-				<img src={landing_bottom} />
 				<TextWrapper>
 					<Title type="h1">Who Are We?</Title>
 					<Paragraph>
@@ -52,6 +51,7 @@ const LandingView = (props) => {
 						Introducing <b>Bambeuros</b>, our new currency.
 					</Paragraph>
 				</TextWrapper>
+				<StyledImage src={landing_bottom} />
 			</Section>
 		</>
 	);

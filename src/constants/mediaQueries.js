@@ -6,6 +6,7 @@ const mediaQueries = {
 	desktopUp: `(min-width: 1025px)`,
 	desktopDown: `(max-width: 1025px)`,
 	bigDesktopUp: `(min-width: 1800px)`,
+	bigDesktopDown: `(max-width: 1800px)`,
 };
 
 export default mediaQueries;

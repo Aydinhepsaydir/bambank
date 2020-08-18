@@ -5,7 +5,12 @@ import { withAuthentication } from "../../contexts/Session";
 import * as ROUTES from "../../constants/routes";
 
 import { Title, Paragraph, TransactionList } from "../../components";
-import { Box, FuncWrapper, TransactionListContainer } from "./DashView.styled";
+import {
+	Box,
+	FuncWrapper,
+	TransactionListContainer,
+	StyledImage,
+} from "./DashView.styled";
 
 import check_balance from "../../assets/graphics/check_balance.png";
 import make_transaction from "../../assets/graphics/make_transaction.png";
@@ -33,7 +38,7 @@ const DashView = (props) => {
 								Check Balance
 							</Title>
 							<br />
-							<img src={check_balance} />
+							<StyledImage src={check_balance} />
 						</Box>
 						<Box
 							onClick={() => {
@@ -44,7 +49,7 @@ const DashView = (props) => {
 								Make Transaction
 							</Title>
 							<br />
-							<img src={make_transaction} />
+							<StyledImage src={make_transaction} />
 						</Box>
 					</FuncWrapper>
 					{user !== null && (

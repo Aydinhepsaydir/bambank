@@ -4,7 +4,7 @@ import SendMoneyForm from "./SendMoneyForm";
 import {
 	SendMoneyWrapper,
 	FuncWrapper,
-	StyledSvg,
+	StyledImage,
 } from "./MakeTransactionView.styled";
 
 import { compose } from "recompose";
@@ -21,10 +21,10 @@ const MakeTransactionView = ({ authState, history }) => {
 
 	return (
 		<SendMoneyWrapper>
+			<StyledImage src={send_money} />
 			<FuncWrapper>
 				<SendMoneyForm />
 			</FuncWrapper>
-			<img src={send_money} />
 		</SendMoneyWrapper>
 	);
 };

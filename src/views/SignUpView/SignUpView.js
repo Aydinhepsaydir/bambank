@@ -3,7 +3,7 @@ import React from "react";
 import auth from "../../assets/graphics/auth.png";
 
 import { SignUpForm } from ".";
-import { SignUpWrapper, FuncWrapper } from "./SignUpView.styled";
+import { SignUpWrapper, FuncWrapper, StyledImage } from "./SignUpView.styled";
 
 import { compose } from "recompose";
 import { withRouter } from "react-router-dom";
@@ -21,7 +21,7 @@ const SignUpView = (props) => {
 
 	return (
 		<SignUpWrapper>
-			<img src={auth} />
+			<StyledImage src={auth} />
 			<FuncWrapper>
 				<SignUpForm />
 			</FuncWrapper>

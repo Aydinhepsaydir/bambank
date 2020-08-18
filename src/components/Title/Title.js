@@ -7,6 +7,7 @@ const StyledH1 = styled.h1`
 	margin: ${(props) => props.margin || "32px 0"};
 	font-size: 50px;
 	color: ${(props) => props.color || COLORS.primary};
+	margin-left: 12px;
 `;
 
 const StyledH2 = styled.h2`

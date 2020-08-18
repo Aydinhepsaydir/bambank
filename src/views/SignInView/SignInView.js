@@ -1,7 +1,7 @@
 import React from "react";
 
 import SignInFormBase from "./SignInFormBase";
-import { SignInWrapper, FuncWrapper } from "./SignInView.styled";
+import { SignInWrapper, FuncWrapper, StyledImage } from "./SignInView.styled";
 
 import auth from "../../assets/graphics/auth.png";
 
@@ -21,7 +21,7 @@ const SignInView = (props) => {
 
 	return (
 		<SignInWrapper>
-			<img src={auth} />
+			<StyledImage src={auth} />
 			<FuncWrapper>
 				<SignInFormBase />
 			</FuncWrapper>

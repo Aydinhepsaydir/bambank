@@ -13,7 +13,6 @@ const StyledForm = styled.form`
 	display: flex;
 	flex-direction: column;
 	width: 100%;
-	max-width: 500px;
 `;
 
 const SignUpFormBase = ({ amplify, firebase }) => {
@@ -58,7 +57,7 @@ const SignUpFormBase = ({ amplify, firebase }) => {
 	const renderRequestCodeForm = () => {
 		return (
 			<>
-				<Title type="h1">Create an account</Title>
+				<Title type="h1">Sign Up</Title>
 				<StyledForm onSubmit={handleSubmit(handleSendCodeClick)}>
 					<Paragraph fontSize="16px">It's quick and easy.</Paragraph>
 					<Input

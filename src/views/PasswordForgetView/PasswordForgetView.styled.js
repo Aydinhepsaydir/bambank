@@ -1,28 +1,32 @@
 import styled from "styled-components";
 import mediaQueries from "../../constants/mediaQueries";
 
-export const SignInWrapper = styled.div`
+export const ForgetPasswordWrapper = styled.div`
 	width: 100%;
 	height: 100%;
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
 
-	@media ${mediaQueries.tabletPortraitUp} {
-		display: flex;
+	@media ${mediaQueries.tabletLandscapeDown} {
 		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-	}
-
-	@media ${mediaQueries.tabletLandscapeUp} {
-		flex-direction: row;
-		justify-content: space-evenly;
-		align-items: center;
 	}
 `;
 
 export const FuncWrapper = styled.div`
-	max-width: 500px;
-	@media ${mediaQueries.tabletPortraitUp} {
-		display: flex;
-		flex-direction: column;
+	max-width: 300px;
+`;
+
+export const StyledImage = styled.img`
+	position: relative;
+	width: 500px;
+	margin-top: 150px;
+
+	@media ${mediaQueries.tabletLandscapeDown} {
+		width: 500px;
+	}
+
+	@media ${mediaQueries.mobileOnly} {
+		width: 40vh;
 	}
 `;
