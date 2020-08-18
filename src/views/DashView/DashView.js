@@ -27,7 +27,9 @@ const DashView = (props) => {
 			{authState === "loading" && <Paragraph>Loading</Paragraph>}
 			{authState === "signedIn" && authData && (
 				<>
-					<Title type="h1">Welcome, {authData.attributes.name}</Title>
+					<Title type="h1" margin="32px 25px">
+						Welcome, {authData.attributes.name}
+					</Title>
 					<FuncWrapper>
 						<Box
 							onClick={() => {

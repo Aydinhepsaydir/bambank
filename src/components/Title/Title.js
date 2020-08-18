@@ -1,13 +1,17 @@
 import React from "react";
 import styled from "styled-components";
 import COLORS from "../../constants/colors";
+import mediaQueries from "../../constants/mediaQueries";
 
 const StyledH1 = styled.h1`
 	padding: ${(props) => props.padding || "24px 0 0 0"};
 	margin: ${(props) => props.margin || "32px 0"};
 	font-size: 50px;
 	color: ${(props) => props.color || COLORS.primary};
-	margin-left: 12px;
+
+	@media ${mediaQueries.mobileOnly} {
+		margin-left: 12px;
+	}
 `;
 
 const StyledH2 = styled.h2`
