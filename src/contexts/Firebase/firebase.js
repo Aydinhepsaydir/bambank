@@ -2,6 +2,7 @@ import app from "firebase/app";
 import firebase from "firebase";
 import moment from "moment";
 
+// normally this would be in a .env but for the purposes of this demo i have left it exposed
 var config = {
 	apiKey: "AIzaSyCYutN1ugqKL3uPDdUJI1WL7TLMY1gSYYU",
 	authDomain: "bambank-b735b.firebaseapp.com",
@@ -17,23 +18,8 @@ class Firebase {
 	constructor() {
 		app.initializeApp(config);
 
-		// this.auth = app.auth();
 		this.store = app.firestore();
 	}
-
-	// // *** Auth API ***
-	// doCreateUserWithEmailAndPassword = (email, password) =>
-	// 	this.auth.createUserWithEmailAndPassword(email, password);
-
-	// doSignInWithEmailAndPassword = (email, password) =>
-	// 	this.auth.signInWithEmailAndPassword(email, password);
-
-	// doSignOut = () => this.auth.signOut();
-
-	// doPasswordReset = (email) => this.auth.sendPasswordResetEmail(email);
-
-	// doPasswordUpdate = (password) =>
-	// 	this.auth.currentUser.updatePassword(password);
 
 	// *** User API ***
 	createUser = (uid, name, email) => {
