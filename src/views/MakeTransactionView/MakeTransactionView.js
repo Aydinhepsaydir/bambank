@@ -12,6 +12,8 @@ import { withRouter } from "react-router-dom";
 import { withAuthentication } from "../../contexts/Session";
 import * as ROUTES from "../../constants/routes";
 
+import send_money from "../../assets/graphics/send_money.png";
+
 const MakeTransactionView = ({ authState, history }) => {
 	if (authState === "signIn") {
 		history.push(ROUTES.SIGN_IN);
@@ -22,7 +24,7 @@ const MakeTransactionView = ({ authState, history }) => {
 			<FuncWrapper>
 				<SendMoneyForm />
 			</FuncWrapper>
-			<StyledSvg />
+			<img src={send_money} />
 		</SendMoneyWrapper>
 	);
 };

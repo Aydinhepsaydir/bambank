@@ -9,11 +9,12 @@ import {
 	PageWrapper,
 	BalanceWrapper,
 	MyTransactionsWrapper,
-	StyledSvg,
 } from "./CheckBalanceView.styled";
 
 import COLORS from "../../constants/colors";
 import * as ROUTES from "../../constants/routes";
+
+import my_transaction from "../../assets/graphics/my_transactions.png";
 
 const CheckBalanceView = ({ user, authState, history }) => {
 	if (authState === "signIn") {
@@ -36,7 +37,7 @@ const CheckBalanceView = ({ user, authState, history }) => {
 					<Title type="h1">Recent Transactions</Title>
 					<MyTransactionsWrapper>
 						<TransactionList transactions={user.transactions} />
-						<StyledSvg />
+						<img src={my_transaction} />
 					</MyTransactionsWrapper>
 				</>
 			)}

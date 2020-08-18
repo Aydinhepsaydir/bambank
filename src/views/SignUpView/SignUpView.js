@@ -1,6 +1,7 @@
 import React from "react";
 
-import { ReactComponent as AuthImage } from "../../assets/graphics/auth.svg";
+import auth from "../../assets/graphics/auth.png";
+
 import { SignUpForm } from ".";
 import { SignUpWrapper, FuncWrapper } from "./SignUpView.styled";
 
@@ -20,7 +21,7 @@ const SignUpView = (props) => {
 
 	return (
 		<SignUpWrapper>
-			<AuthImage />
+			<img src={auth} />
 			<FuncWrapper>
 				<SignUpForm />
 			</FuncWrapper>

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import COLORS from "../../constants/colors";
+import mediaQueries from "../../constants/mediaQueries";
 
 export const Section = styled.div`
 	width: 100%;
@@ -12,3 +13,7 @@ export const Section = styled.div`
 `;
 
 export const TextWrapper = styled.div``;
+
+export const StyledImage = styled.img`
+	width: 400px;
+`;

@@ -7,8 +7,8 @@ import * as ROUTES from "../../constants/routes";
 import { Title, Paragraph, TransactionList } from "../../components";
 import { Box, FuncWrapper, TransactionListContainer } from "./DashView.styled";
 
-import { ReactComponent as BalanceSvg } from "../../assets/graphics/check_balance.svg";
-import { ReactComponent as TransactionSvg } from "../../assets/graphics/make_transaction.svg";
+import check_balance from "../../assets/graphics/check_balance.png";
+import make_transaction from "../../assets/graphics/make_transaction.png";
 import { withUser } from "../../contexts/User";
 
 const DashView = (props) => {
@@ -33,7 +33,7 @@ const DashView = (props) => {
 								Check Balance
 							</Title>
 							<br />
-							<BalanceSvg />
+							<img src={check_balance} />
 						</Box>
 						<Box
 							onClick={() => {
@@ -44,7 +44,7 @@ const DashView = (props) => {
 								Make Transaction
 							</Title>
 							<br />
-							<TransactionSvg />
+							<img src={make_transaction} />
 						</Box>
 					</FuncWrapper>
 					{user !== null && (
