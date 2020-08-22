@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import * as ROUTES from "../../constants/routes";
+import * as ROUTES from "../../constants";
 import styled from "styled-components";
-import COLORS from "../../constants/colors";
+import { COLORS } from "../../constants";
 
 const StyledLink = styled(Link)`
   color: ${COLORS.purple};
